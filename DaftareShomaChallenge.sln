@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaftareShomaChallenge.Domain", "DaftareShomaChallenge.Domain\DaftareShomaChallenge.Domain.csproj", "{FDAC80D0-4C83-4127-91C0-40DA25A27D63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaftareShomaChallenge.Infrastructure", "DaftareShomaChallenge.Infrastructure\DaftareShomaChallenge.Infrastructure.csproj", "{6710260F-3F59-4712-8C71-3F68602DF67C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaftareShomaChallenge.Application", "DaftareShomaChallenge.Application\DaftareShomaChallenge.Application.csproj", "{75D388B2-2C95-4E66-AE67-C08F66D79461}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaftareShomaChallenge.Application.Contracts", "DaftareShomaChallenge.Application.Contracts\DaftareShomaChallenge.Application.Contracts.csproj", "{7538747A-4797-4343-98A6-2D2E3A6D4268}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaftareShomaChallenge.Web", "DaftareShomaChallenge.Web\DaftareShomaChallenge.Web.csproj", "{D7FDDA19-D45C-4917-9595-0449B896FABE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDAC80D0-4C83-4127-91C0-40DA25A27D63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDAC80D0-4C83-4127-91C0-40DA25A27D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDAC80D0-4C83-4127-91C0-40DA25A27D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDAC80D0-4C83-4127-91C0-40DA25A27D63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6710260F-3F59-4712-8C71-3F68602DF67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6710260F-3F59-4712-8C71-3F68602DF67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6710260F-3F59-4712-8C71-3F68602DF67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6710260F-3F59-4712-8C71-3F68602DF67C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D388B2-2C95-4E66-AE67-C08F66D79461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D388B2-2C95-4E66-AE67-C08F66D79461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D388B2-2C95-4E66-AE67-C08F66D79461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D388B2-2C95-4E66-AE67-C08F66D79461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7538747A-4797-4343-98A6-2D2E3A6D4268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7538747A-4797-4343-98A6-2D2E3A6D4268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7538747A-4797-4343-98A6-2D2E3A6D4268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7538747A-4797-4343-98A6-2D2E3A6D4268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7FDDA19-D45C-4917-9595-0449B896FABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7FDDA19-D45C-4917-9595-0449B896FABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7FDDA19-D45C-4917-9595-0449B896FABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7FDDA19-D45C-4917-9595-0449B896FABE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E78EFE3-49E8-46AA-B7EA-4E0F1D376BD4}
+	EndGlobalSection
+EndGlobal

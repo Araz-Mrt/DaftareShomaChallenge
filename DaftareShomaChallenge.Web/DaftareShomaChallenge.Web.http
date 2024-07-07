@@ -1,0 +1,6 @@
+@DaftareShomaChallenge.Web_HostAddress = http://localhost:5045
+
+GET {{DaftareShomaChallenge.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
