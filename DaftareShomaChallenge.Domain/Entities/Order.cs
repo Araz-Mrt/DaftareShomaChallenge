@@ -2,8 +2,26 @@
 
 public class Order : BaseEntity
 {
-    public string Number { get; set; }
-    public ICollection<OrderLine> OrderLines { get; set; }
-    public decimal TotalPrice { get; set; }
+    #region constructors
+    public Order()
+    {
+
+    }
+
+    public Order(string number, decimal totalPrice)
+    {
+        Number = number;
+        TotalPrice = totalPrice;
+    }
+
+
+    #endregion
+    #region navigations
+    public ICollection<OrderLine> OrderLines { get; private set; }
+    #endregion
+
+    public string Number { get; }
+    public decimal TotalPrice { get; private set; }
     public DateTimeOffset Date { get; } = DateTimeOffset.Now;
+
 }

@@ -2,12 +2,32 @@
 
 public class OrderLine : BaseEntity
 {
-    public Product Product { get; set; }
-    public Order Order { get; set; }
-    public int OrderId { get; set; }
-    public int ProductId { get; set; }
+    #region constructors
+    public OrderLine()
+    {
+
+    }
+    public OrderLine(int orderId, int productId, int quantity, decimal price)
+    {
+        OrderId = orderId;
+        ProductId = productId;
+        Quantity = quantity;
+        Price = price;
+    }
 
 
-    public int Quantity { get; set; }
-    public decimal Price { get; set; }
+    #endregion
+    #region navigations
+
+    public Product Product { get; private set; }
+    public Order Order { get; private set; }
+
+    #endregion
+
+    public int OrderId { get; }
+    public int ProductId { get; }
+
+    public int Quantity { get; private set; }
+    public decimal Price { get; private set; }
+
 }
