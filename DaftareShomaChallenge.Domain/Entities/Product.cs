@@ -1,7 +1,8 @@
 ﻿namespace DaftareShomaChallenge.Domain.Entities;
 
-public class Product
+public class Product : BaseEntity
 {
-    public int Price { get; set; }
+    public decimal Price { get; set; }
     public string Title { get; set; }
+
 }

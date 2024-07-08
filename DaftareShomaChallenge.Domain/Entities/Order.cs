@@ -1,9 +1,9 @@
 ﻿namespace DaftareShomaChallenge.Domain.Entities;
 
-public class Order
+public class Order : BaseEntity
 {
     public string Number { get; set; }
     public ICollection<OrderLine> OrderLines { get; set; }
-    public long TotalPrice { get; set; }
-    public DateTime Date { get; set; }
+    public decimal TotalPrice { get; set; }
+    public DateTimeOffset Date { get; } = DateTimeOffset.Now;
 }
