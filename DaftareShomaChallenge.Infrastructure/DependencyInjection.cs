@@ -7,7 +7,7 @@ namespace DaftareShomaChallenge.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastrctureServices(this IServiceCollection services,
+    public static IServiceCollection AddInfrasturctureServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddDbContext<ApplicationDbContext>(options =>
