@@ -3,5 +3,7 @@
 public class ProductSalesByDateReportModel
 {
     public string ProductName { get; set; }
-    public Dictionary<DateTime, int> SalesByDate { get; set; }
+    public int ProductId { get; set; }
+    public DateTime Date { get; set; }
+    public int TotalCount { get; set; }
 }

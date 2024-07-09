@@ -1,6 +1,7 @@
 ﻿using DaftareShomaChallenge.Domain.Interfaces;
 using DaftareShomaChallenge.Domain.Models;
 using DaftareShomaChallenge.Infrastructure.Persistence;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 namespace DaftareShomaChallenge.Infrastructure.Services;
@@ -39,8 +40,28 @@ public class ProductSaleReportService : IProductSaleReportService
         return Result.Success(result);
     }
 
-    public Task<Result<List<ProductSalesByDateReportModel>>> GetProductSalesForLastNDaysAsync(int days = 7)
+    public async Task<Result<List<ProductSalesByDateReportModel>>> GetProductSalesForLastNDaysAsync(int days = 7)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var result = await _context.Database
+             .SqlQueryRaw<ProductSalesByDateReportModel>(
+                 GenerateSqlQuery(),
+                 new SqliteParameter("@TargetDay", days))
+             .ToListAsync();
+            return result;
+        }
+        catch (Exception e)
+        {
+            return Result.Failure<List<ProductSalesByDateReportModel>>(null, [e.Message]);
+        }
+
     }
+
+    private string GenerateSqlQuery()
+    {
+        string query = "WITH RECURSIVE date_series AS (\r\n    SELECT DATE('now', '-@TargetDay days') AS order_date\r\n    UNION ALL\r\n    SELECT DATE(order_date, '+1 days')\r\n    FROM date_series\r\n    WHERE order_date < DATE('now','-1 days')\r\n)\r\nSELECT\r\n    ds.order_date AS Date,\r\n    p.Id AS ProductId,\r\n    p.Title AS ProductName,\r\n    COALESCE(SUM(sub.Quantity), 0) AS TotalCount \r\nFROM\r\n    date_series ds\r\nCROSS JOIN\r\n    Products p\r\nLEFT JOIN\r\n    (SELECT o.OrderDate, ol.ProductId, ol.Quantity\r\n     FROM OrderLines ol\r\n     JOIN Orders o ON ol.OrderId = o.Id) sub\r\nON ds.order_date = DATE(sub.OrderDate) AND p.Id = sub.ProductId\r\nGROUP BY\r\n    ds.order_date, p.Id, p.Title\r\nORDER BY\r\n    ds.order_date desc, p.Id;\r\n";
+        return query;
+    }
+
 }
