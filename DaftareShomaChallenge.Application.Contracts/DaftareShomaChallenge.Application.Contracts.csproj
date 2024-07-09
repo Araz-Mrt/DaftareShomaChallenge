@@ -10,4 +10,8 @@
     <Folder Include="Interfaces\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DaftareShomaChallenge.Shared\DaftareShomaChallenge.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
