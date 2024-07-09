@@ -20,7 +20,10 @@ public class ApplicationDbContextInitializer
     {
         try
         {
+            _logger.LogInformation("Initializing database");
+
             await _context.Database.MigrateAsync();
+            _logger.LogInformation("initializing database Completed");
         }
         catch (Exception ex)
         {
@@ -32,7 +35,9 @@ public class ApplicationDbContextInitializer
     {
         try
         {
+            _logger.LogInformation("Trying to seed data");
             await TrySeedAsync(serviceProvider);
+            _logger.LogInformation("Trying to seed data Completed");
         }
         catch (Exception ex)
         {
@@ -45,7 +50,6 @@ public class ApplicationDbContextInitializer
     {
         using var scope = serviceProvider.CreateScope();
 
-        // Then set current tenant so the right connectionstring is used
         var _seederService = serviceProvider.GetRequiredService<SeederService>();
         await _seederService.SeedAsync();
     }
