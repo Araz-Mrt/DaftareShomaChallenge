@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DaftareShomaChallenge.Shared\DaftareShomaChallenge.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
