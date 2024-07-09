@@ -38,12 +38,15 @@ public class SeederService
 
     private async Task<string> ReadSqlFileAsync(string filePath)
     {
-        if (!File.Exists(filePath))
+        var current = Directory.GetCurrentDirectory();
+        var path = Path.Combine(current, filePath);
+
+        if (!File.Exists(path))
         {
-            _logger.LogError("SQL file not found at path: {filePath}", filePath);
-            throw new FileNotFoundException($"SQL file not found at path: {filePath}");
+            _logger.LogError("SQL file not found at path: {path}", path);
+            throw new FileNotFoundException($"SQL file not found at path: {path}");
         }
-        using var reader = new StreamReader(filePath);
+        using var reader = new StreamReader(path);
         return await reader.ReadToEndAsync();
     }
     private async Task ExecuteSqlRawAsync(string sqlQuery)
