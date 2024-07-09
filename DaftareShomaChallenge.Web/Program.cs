@@ -1,6 +1,8 @@
 using DaftareShomaChallenge.Application;
+using DaftareShomaChallenge.Application.Contracts.Filters;
 using DaftareShomaChallenge.Application.Contracts.Interfaces;
 using DaftareShomaChallenge.Infrastructure.Persistence.Initializers;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +33,14 @@ app.MapGet("/products", async (IProductService productService) =>
         return (result);
     })
     .WithName("GetProducts")
+    .WithOpenApi();
+
+app.MapGet("/report/productsale", async ([AsParameters]GetProductSaleCountReportFilter filter,[FromServices] IApplicationProductSaleReportService productSaleReportService) =>
+    {
+        var result = await productSaleReportService.GetProductSalesCountReportAsync(filter);
+        return (result);
+    })
+    .WithName("GetSoldProductCountReport")
     .WithOpenApi();
 
 
