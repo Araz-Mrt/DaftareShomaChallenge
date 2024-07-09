@@ -3,6 +3,7 @@ using DaftareShomaChallenge.Application.Contracts.DTOs.ProductSaleReports;
 using DaftareShomaChallenge.Application.Contracts.Filters;
 using DaftareShomaChallenge.Application.Contracts.Interfaces;
 using DaftareShomaChallenge.Domain.Interfaces;
+using DaftareShomaChallenge.Shared.ExtensionMethods;
 
 namespace DaftareShomaChallenge.Application.Services;
 
@@ -36,7 +37,7 @@ public class ApplicationProductSaleReportService : IApplicationProductSaleReport
                 {
                     data.Add(new ProductSalesByDateReportDto()
                     {
-                        Date = x.Date.ToLongDateString(),
+                        Date = x.Date.ToPersianMonthDayString(),
                         ProductId = x.ProductId,
                         ProductName = x.ProductName,
                         TotalCount = x.TotalCount
