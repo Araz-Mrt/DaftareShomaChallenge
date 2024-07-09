@@ -18,7 +18,7 @@ OrderNumber AS (
     FROM DateRange, (SELECT 1 AS RowNum UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4)
 )
 -- Insert orders
-INSERT INTO Orders (Number, TotalPrice, Date)
+INSERT INTO Orders (Number, TotalPrice, OrderDate)
 SELECT Number, 0, Date
 FROM OrderNumber;
 
