@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\DaftareShomaChallenge.Shared\DaftareShomaChallenge.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DaftareShomaChallenge.Shared\DaftareShomaChallenge.Shared.csproj" />
+    <Folder Include="DTOs\ProductSaleReports\" />
   </ItemGroup>
 
 </Project>
