@@ -8,14 +8,17 @@ namespace DaftareShomaChallenge.Application.Services;
 public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
+    private readonly IMapper _mapper;
 
-    public ProductService(IProductRepository productRepository)
+    public ProductService(IProductRepository productRepository, IMapper mapper)
     {
         _productRepository = productRepository;
+        _mapper = mapper;
     }
+
     public async Task<Result<List<ProductDto>>> GetProductsAsync()
     {
         var result = await _productRepository.GetProductsAsync();
-        return Result.Success(new List<ProductDto>());
+        return Result.Success(_mapper.Map<List<ProductDto>>(result.Data));
     }
 }
