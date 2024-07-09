@@ -3,16 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DaftareShomaChallenge.Infrastructure.Persistence.Seeder;
 
-internal class SeederService
+public class SeederService
 {
     private readonly ApplicationDbContext _context;
 
-    internal SeederService(ApplicationDbContext context)
+    public SeederService(ApplicationDbContext context)
     {
         _context = context;
     }
 
-    internal async Task SeedAsync()
+    public async Task SeedAsync()
     {
         await SeedProductsAsync();
     }
