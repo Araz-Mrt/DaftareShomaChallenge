@@ -44,10 +44,11 @@ public class ProductSaleReportService : IProductSaleReportService
     {
         try
         {
+            var dateOffset = $"-{Math.Abs(days)} days";
             var result = await _context.Database
              .SqlQueryRaw<ProductSalesByDateReportModel>(
                  GenerateSqlQuery(),
-                 new SqliteParameter("@TargetDay", days))
+                 new SqliteParameter("@TargetDay", dateOffset))
              .ToListAsync();
             return result;
         }
@@ -60,7 +61,7 @@ public class ProductSaleReportService : IProductSaleReportService
 
     private string GenerateSqlQuery()
     {
-        string query = "WITH RECURSIVE date_series AS (\r\n    SELECT DATE('now', '-@TargetDay days') AS order_date\r\n    UNION ALL\r\n    SELECT DATE(order_date, '+1 days')\r\n    FROM date_series\r\n    WHERE order_date < DATE('now','-1 days')\r\n)\r\nSELECT\r\n    ds.order_date AS Date,\r\n    p.Id AS ProductId,\r\n    p.Title AS ProductName,\r\n    COALESCE(SUM(sub.Quantity), 0) AS TotalCount \r\nFROM\r\n    date_series ds\r\nCROSS JOIN\r\n    Products p\r\nLEFT JOIN\r\n    (SELECT o.OrderDate, ol.ProductId, ol.Quantity\r\n     FROM OrderLines ol\r\n     JOIN Orders o ON ol.OrderId = o.Id) sub\r\nON ds.order_date = DATE(sub.OrderDate) AND p.Id = sub.ProductId\r\nGROUP BY\r\n    ds.order_date, p.Id, p.Title\r\nORDER BY\r\n    ds.order_date desc, p.Id;\r\n";
+        string query = "WITH RECURSIVE date_series AS (\r\n    SELECT DATE('now',@TargetDay) AS order_date\r\n    UNION ALL\r\n    SELECT DATE(order_date, '+1 days')\r\n    FROM date_series\r\n    WHERE order_date < DATE('now','-1 days')\r\n)\r\nSELECT\r\n    ds.order_date AS Date,\r\n    p.Id AS ProductId,\r\n    p.Title AS ProductName,\r\n    COALESCE(SUM(sub.Quantity), 0) AS TotalCount \r\nFROM\r\n    date_series ds\r\nCROSS JOIN\r\n    Products p\r\nLEFT JOIN\r\n    (SELECT o.OrderDate, ol.ProductId, ol.Quantity\r\n     FROM OrderLines ol\r\n     JOIN Orders o ON ol.OrderId = o.Id) sub\r\nON ds.order_date = DATE(sub.OrderDate) AND p.Id = sub.ProductId\r\nGROUP BY\r\n    ds.order_date, p.Id, p.Title\r\nORDER BY\r\n    ds.order_date desc, p.Id;\r\n";
         return query;
     }
 
