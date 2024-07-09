@@ -19,4 +19,10 @@
     <ProjectReference Include="..\DaftareShomaChallenge.Application\DaftareShomaChallenge.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="SeedQuery.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
