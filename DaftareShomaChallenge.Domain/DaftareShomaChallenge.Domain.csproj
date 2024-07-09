@@ -10,4 +10,8 @@
     <ProjectReference Include="..\DaftareShomaChallenge.Shared\DaftareShomaChallenge.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
