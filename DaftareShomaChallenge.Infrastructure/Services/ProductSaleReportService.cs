@@ -15,10 +15,16 @@ public class ProductSaleReportService : IProductSaleReportService
     }
     public async Task<Result<List<SoldProductCountModel>>> GetProductSalesCountReportAsync(DateTime fromDate, DateTime toDate)
     {
+
         if (fromDate.Date == toDate.Date)
         {
-            toDate = toDate.Date.AddDays(1).AddTicks(-1);
+            //main way:
+            // toDate = toDate.Date.AddDays(1).AddTicks(-1);
+
+            //because of the sqliteProvider
+            toDate = toDate.Date.AddDays(1).Date;
         }
+
 
         var query = _context.OrderLines
             .Include(ol => ol.Product)
