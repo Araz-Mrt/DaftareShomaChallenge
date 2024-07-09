@@ -1,4 +1,5 @@
-﻿using DaftareShomaChallenge.Application.Contracts.DTOs.Products;
+﻿using AutoMapper;
+using DaftareShomaChallenge.Application.Contracts.DTOs.Products;
 using DaftareShomaChallenge.Application.Contracts.Interfaces;
 using DaftareShomaChallenge.Domain.Repositories;
 
