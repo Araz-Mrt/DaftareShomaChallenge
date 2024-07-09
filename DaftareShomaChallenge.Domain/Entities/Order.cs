@@ -22,6 +22,6 @@ public class Order : BaseEntity
 
     public string Number { get; }
     public decimal TotalPrice { get; private set; }
-    public DateTime Date { get; private set; }
+    public DateTime OrderDate { get; private set; }
 
 }
