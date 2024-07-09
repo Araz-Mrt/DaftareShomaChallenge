@@ -24,8 +24,34 @@ public class ApplicationProductSaleReportService : IApplicationProductSaleReport
         return res.IsSuccess ? Result.Success(data) : Result.Failure(data, res.Errors);
     }
 
-    public Task<Result<List<ProductSalesByDateReportDto>>> GetProductSalesForLastNDaysAsync()
+    public async Task<Result<List<ProductSalesByDateReportDto>>> GetProductSalesForLastNDaysAsync()
     {
-        throw new NotImplementedException();
+        var result = await _productSaleReportService.GetProductSalesForLastNDaysAsync();
+        if (result.IsSuccess)
+        {
+            if (result.Data != null && result.Data.Any())
+            {
+                var data = new List<ProductSalesByDateReportDto>(result.Data.Count);
+                result.Data.ForEach(x =>
+                {
+                    data.Add(new ProductSalesByDateReportDto()
+                    {
+                        Date = x.Date.ToLongDateString(),
+                        ProductId = x.ProductId,
+                        ProductName = x.ProductName,
+                        TotalCount = x.TotalCount
+                    });
+                });
+                return Result.Success(data);
+            }
+            else
+            {
+                return Result.Success<List<ProductSalesByDateReportDto>>(null);
+            }
+        }
+        else
+        {
+            return Result.Failure<List<ProductSalesByDateReportDto>>(null, result.Errors);
+        }
     }
 }
