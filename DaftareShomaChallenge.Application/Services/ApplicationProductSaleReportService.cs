@@ -23,4 +23,9 @@ public class ApplicationProductSaleReportService : IApplicationProductSaleReport
         var data = _mapper.Map<List<SoldProductCountDto>>(res.Data);
         return res.IsSuccess ? Result.Success(data) : Result.Failure(data, res.Errors);
     }
+
+    public Task<Result<List<ProductSalesByDateReportDto>>> GetProductSalesForLastNDaysAsync()
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -6,4 +6,6 @@ namespace DaftareShomaChallenge.Application.Contracts.Interfaces;
 public interface IApplicationProductSaleReportService
 {
     Task<Result<List<SoldProductCountDto>>> GetProductSalesCountReportAsync(GetProductSaleCountReportFilter filter);
+    Task<Result<List<ProductSalesByDateReportDto>>> GetProductSalesForLastNDaysAsync();
+
 }
