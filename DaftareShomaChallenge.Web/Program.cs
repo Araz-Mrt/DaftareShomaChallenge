@@ -35,12 +35,20 @@ app.MapGet("/products", async (IProductService productService) =>
     .WithName("GetProducts")
     .WithOpenApi();
 
-app.MapGet("/report/productsale", async ([AsParameters]GetProductSaleCountReportFilter filter,[FromServices] IApplicationProductSaleReportService productSaleReportService) =>
+app.MapGet("/report/productsale", async ([AsParameters] GetProductSaleCountReportFilter filter, [FromServices] IApplicationProductSaleReportService productSaleReportService) =>
     {
         var result = await productSaleReportService.GetProductSalesCountReportAsync(filter);
         return (result);
     })
     .WithName("GetSoldProductCountReport")
+    .WithOpenApi();
+
+app.MapGet("/report/productsalesbydate", async ([FromServices] IApplicationProductSaleReportService productSaleReportService) =>
+    {
+        var result = await productSaleReportService.GetProductSalesForLastNDaysAsync();
+        return (result);
+    })
+    .WithName("GetSoldProductCountByDateReport")
     .WithOpenApi();
 
 
