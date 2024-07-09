@@ -50,7 +50,7 @@ public class ProductSaleReportService : IProductSaleReportService
                  GenerateSqlQuery(),
                  new SqliteParameter("@TargetDay", dateOffset))
              .ToListAsync();
-            return result;
+            return Result.Success<List<ProductSalesByDateReportModel>>(result);
         }
         catch (Exception e)
         {
