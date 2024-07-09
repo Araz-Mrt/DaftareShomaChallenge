@@ -22,6 +22,6 @@ public class Order : BaseEntity
 
     public string Number { get; }
     public decimal TotalPrice { get; private set; }
-    public DateTimeOffset Date { get; } = DateTimeOffset.Now;
+    public DateTimeOffset Date { get; private set; } = DateTimeOffset.Now;
 
 }
