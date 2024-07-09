@@ -15,4 +15,8 @@
     <ProjectReference Include="..\DaftareShomaChallenge.Domain\DaftareShomaChallenge.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
