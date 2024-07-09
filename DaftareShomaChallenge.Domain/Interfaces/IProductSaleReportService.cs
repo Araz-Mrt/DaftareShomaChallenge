@@ -4,5 +4,5 @@ namespace DaftareShomaChallenge.Domain.Interfaces;
 
 public interface IProductSaleReportService
 {
-    Task<Result<List<SoldProductCountModel>>> GetProductSalesCountReportAsync();
+    Task<Result<List<SoldProductCountModel>>> GetProductSalesCountReportAsync(DateTime fromDate,DateTime toDate);
 }

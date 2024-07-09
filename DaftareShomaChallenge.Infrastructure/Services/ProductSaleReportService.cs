@@ -5,7 +5,7 @@ namespace DaftareShomaChallenge.Infrastructure.Services;
 
 public class ProductSaleReportService : IProductSaleReportService
 {
-    public Task<Result<List<SoldProductCountModel>>> GetProductSalesCountReportAsync()
+    public Task<Result<List<SoldProductCountModel>>> GetProductSalesCountReportAsync(DateTime fromDate, DateTime toDate)
     {
         throw new NotImplementedException();
     }
