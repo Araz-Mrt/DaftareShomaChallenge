@@ -16,8 +16,4 @@
     <ProjectReference Include="..\DaftareShomaChallenge.Infrastructure\DaftareShomaChallenge.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
