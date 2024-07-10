@@ -25,4 +25,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Handlers\" />
+  </ItemGroup>
+
 </Project>

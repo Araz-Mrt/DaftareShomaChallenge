@@ -2,6 +2,7 @@ using DaftareShomaChallenge.Application;
 using DaftareShomaChallenge.Application.Contracts.Filters;
 using DaftareShomaChallenge.Application.Contracts.Interfaces;
 using DaftareShomaChallenge.Infrastructure.Persistence.Initializers;
+using DaftareShomaChallenge.Web.Common.Handlers;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,10 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<BadRequestExceptionHandler>();
 var app = builder.Build();
 
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -26,7 +28,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseHttpsRedirection();
-
+app.UseExceptionHandler();
 app.MapGet("/products", async (IProductService productService) =>
     {
         var result = await productService.GetProductsAsync();
