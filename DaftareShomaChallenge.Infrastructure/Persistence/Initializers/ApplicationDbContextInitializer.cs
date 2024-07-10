@@ -48,8 +48,6 @@ public class ApplicationDbContextInitializer
 
     public async Task TrySeedAsync(IServiceProvider serviceProvider)
     {
-        using var scope = serviceProvider.CreateScope();
-
         var _seederService = serviceProvider.GetRequiredService<SeederService>();
         await _seederService.SeedAsync();
     }
