@@ -4,6 +4,7 @@ using DaftareShomaChallenge.Application.Contracts.Filters;
 using DaftareShomaChallenge.Application.Contracts.Interfaces;
 using DaftareShomaChallenge.Domain.Interfaces;
 using DaftareShomaChallenge.Shared.ExtensionMethods;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DaftareShomaChallenge.Application.Services;
 
@@ -21,8 +22,16 @@ public class ApplicationProductSaleReportService : IApplicationProductSaleReport
     public async Task<Result<List<SoldProductCountDto>>> GetProductSalesCountReportAsync(GetProductSaleCountReportFilter filter)
     {
         var res = await _productSaleReportService.GetProductSalesCountReportAsync(filter.fromDate, filter.toDate);
-        var data = _mapper.Map<List<SoldProductCountDto>>(res.Data);
-        return res.IsSuccess ? Result.Success(data) : Result.Failure(data, res.Errors);
+        if (res.IsSuccess)
+        {
+            var data = _mapper.Map<List<SoldProductCountDto>>(res.Data);
+            return Result.Success(data);
+        }
+        else
+        {
+            return Result.Failure<List<SoldProductCountDto>>(null,res.Errors);
+        }
+
     }
 
     public async Task<Result<List<ProductSalesByDateReportDto>>> GetProductSalesForLastNDaysAsync()

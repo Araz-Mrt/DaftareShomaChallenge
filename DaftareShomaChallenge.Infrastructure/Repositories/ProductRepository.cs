@@ -15,7 +15,15 @@ public class ProductRepository : IProductRepository
     }
     public async Task<Result<List<Product>>> GetProductsAsync()
     {
-        var products = await _context.Products.ToListAsync();
-        return Result.Success(products);
+        try
+        {
+            var products = await _context.Products.ToListAsync();
+            return Result.Success(products);
+        }
+        catch (Exception e)
+        {
+            return Result.Failure<List<Product>>(null, [e.Message]);
+        }
+
     }
 }
