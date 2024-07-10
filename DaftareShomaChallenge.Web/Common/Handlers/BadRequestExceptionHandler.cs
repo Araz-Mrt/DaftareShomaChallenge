@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+﻿using DaftareShomaChallenge.Shared.Common;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DaftareShomaChallenge.Web.Common.Handlers;
@@ -27,17 +28,12 @@ internal sealed class BadRequestExceptionHandler : IExceptionHandler
             "Exception occurred: {Message}",
             badRequestException.Message);
 
-        var problemDetails = new ProblemDetails
-        {
-            Status = StatusCodes.Status400BadRequest,
-            Title = "Bad Request",
-            Detail = badRequestException.Message
-        };
+        var result = Result.Failure([badRequestException.Message]);
 
-        httpContext.Response.StatusCode = problemDetails.Status.Value;
+        httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
 
         await httpContext.Response
-            .WriteAsJsonAsync(problemDetails, cancellationToken);
+            .WriteAsJsonAsync(result, cancellationToken);
 
         return true;
     }
