@@ -15,15 +15,12 @@ public class Result
     public string[]? Errors { get; init; }
     public string Description { get; init; }
 
-    public static Result Success()
-    {
-        return new Result(true, Array.Empty<string>());
-    }
+    public static Result Success()=> 
+        new(true, Array.Empty<string>());
+    
 
-    public static Result Failure(IEnumerable<string>? errors = null)
-    {
-        return new Result(false, errors);
-    }
+    public static Result Failure(IEnumerable<string>? errors = null)=> 
+        new(false, errors);
 
     public static Result<TValue> Success<TValue>(TValue value) =>
         new(value, true, null);
