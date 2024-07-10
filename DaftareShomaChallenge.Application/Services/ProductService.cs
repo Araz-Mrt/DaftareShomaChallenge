@@ -18,7 +18,16 @@ public class ProductService : IProductService
 
     public async Task<Result<List<ProductDto>>> GetProductsAsync()
     {
+
         var result = await _productRepository.GetProductsAsync();
-        return Result.Success(_mapper.Map<List<ProductDto>>(result.Data));
+        if (result.IsSuccess)
+        {
+            return Result.Success(_mapper.Map<List<ProductDto>>(result.Data));
+        }
+        else
+        {
+            return Result.Failure<List<ProductDto>>(null, result.Errors);
+        }
+
     }
 }
