@@ -1,4 +1,5 @@
 ﻿using DaftareShomaChallenge.Domain.Entities;
+using DaftareShomaChallenge.Shared.Common;
 
 namespace DaftareShomaChallenge.Domain.Repositories;
 

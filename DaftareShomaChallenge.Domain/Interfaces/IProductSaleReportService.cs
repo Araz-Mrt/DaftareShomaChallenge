@@ -1,4 +1,5 @@
 ﻿using DaftareShomaChallenge.Domain.Models;
+using DaftareShomaChallenge.Shared.Common;
 
 namespace DaftareShomaChallenge.Domain.Interfaces;
 

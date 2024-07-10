@@ -1,5 +1,6 @@
 ﻿using DaftareShomaChallenge.Application.Contracts.DTOs.ProductSaleReports;
 using DaftareShomaChallenge.Application.Contracts.Filters;
+using DaftareShomaChallenge.Shared.Common;
 
 namespace DaftareShomaChallenge.Application.Contracts.Interfaces;
 

@@ -1,6 +1,7 @@
 ﻿using DaftareShomaChallenge.Domain.Interfaces;
 using DaftareShomaChallenge.Domain.Models;
 using DaftareShomaChallenge.Infrastructure.Persistence;
+using DaftareShomaChallenge.Shared.Common;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 

@@ -3,6 +3,7 @@ using DaftareShomaChallenge.Application.Contracts.DTOs.ProductSaleReports;
 using DaftareShomaChallenge.Application.Contracts.Filters;
 using DaftareShomaChallenge.Application.Contracts.Interfaces;
 using DaftareShomaChallenge.Domain.Interfaces;
+using DaftareShomaChallenge.Shared.Common;
 using DaftareShomaChallenge.Shared.ExtensionMethods;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 

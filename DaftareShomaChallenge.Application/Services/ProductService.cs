@@ -2,6 +2,7 @@
 using DaftareShomaChallenge.Application.Contracts.DTOs.Products;
 using DaftareShomaChallenge.Application.Contracts.Interfaces;
 using DaftareShomaChallenge.Domain.Repositories;
+using DaftareShomaChallenge.Shared.Common;
 
 namespace DaftareShomaChallenge.Application.Services;
 

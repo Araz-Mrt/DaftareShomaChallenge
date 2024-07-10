@@ -1,6 +1,7 @@
 ﻿using DaftareShomaChallenge.Domain.Entities;
 using DaftareShomaChallenge.Domain.Repositories;
 using DaftareShomaChallenge.Infrastructure.Persistence;
+using DaftareShomaChallenge.Shared.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace DaftareShomaChallenge.Infrastructure.Repositories;

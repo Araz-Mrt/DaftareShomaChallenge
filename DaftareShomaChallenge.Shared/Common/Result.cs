@@ -1,5 +1,6 @@
 ﻿using DaftareShomaChallenge.Shared.Common;
 
+namespace DaftareShomaChallenge.Shared.Common;
 public class Result
 {
     internal Result(bool isSuccess, IEnumerable<string>? errors)
